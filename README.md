@@ -3,6 +3,8 @@
 여러 장의 이미지를 세로로 깔끔하게 이어 붙여 하나의 이미지로 저장하는 크로스 플랫폼 데스크톱 앱입니다.  
 오픈마켓·쇼핑몰 상세설명 페이지처럼 세로로 긴 이미지를 손쉽게 제작할 때 유용합니다.
 
+<img width="1424" height="1824" alt="image" src="https://github.com/user-attachments/assets/8b2cd45f-75b5-44d6-90b4-d447371ba9ef" />
+
 ---
 
 ## 주요 기능
