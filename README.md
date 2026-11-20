@@ -151,4 +151,6 @@ ieodama/
 
 ## 라이선스
 
+누구나 자유롭게 무료로 이용할 수 있습니다. 
+출처만 남겨주세요. 
 Copyright © 2026 CREATOR JOSEPH (creatorjoseph@kakao.com)
