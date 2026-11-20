@@ -1,0 +1,110 @@
+{
+  "name": "ieodama",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "compile": "tsc -b && vite build",
+    "build:win": "npm run compile && electron-builder --win --x64",
+    "build:mac": "npm run compile && electron-builder --mac",
+    "build:mac:intel": "npm run compile && electron-builder --mac --x64",
+    "build:mac:arm": "npm run compile && electron-builder --mac --arm64",
+    "build:mac:all": "npm run compile && electron-builder --mac --x64 --arm64",
+    "build:all": "npm run compile && electron-builder --mac --x64 --arm64 && electron-builder --win --x64",
+    "electron:dev": "vite",
+    "lint": "oxlint src electron scripts",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.creatorjoseph.ieodama",
+    "productName": "ieodama",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "asarUnpack": [
+      "**/node_modules/sharp/**/*",
+      "**/node_modules/@img/**/*"
+    ],
+    "npmRebuild": false,
+    "beforePack": "./scripts/beforePack.cjs",
+    "afterPack": "./scripts/afterPack.cjs",
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.photography"
+    },
+    "dmg": {
+      "artifactName": "ieodama-v${version}-mac-${arch}.${ext}",
+      "background": "build/dmg_background.png",
+      "window": {
+        "width": 600,
+        "height": 400
+      },
+      "contents": [
+        {
+          "x": 150,
+          "y": 200
+        },
+        {
+          "x": 450,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "ieodama-v${version}-win-${arch}-setup.${ext}",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ieodama"
+    }
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "heic-convert": "^2.1.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@types/heic-convert": "^2.1.1",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "vite-plugin-electron": "^1.1.0",
+    "vite-plugin-electron-renderer": "^1.0.0",
+    "wait-on": "^9.0.10"
+  }
+}
